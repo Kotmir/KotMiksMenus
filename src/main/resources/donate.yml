@@ -1,0 +1,325 @@
+# ═══════════════════════════════════════════════════════════════
+#  KotMiksMenus — donate.yml (/donate)
+#  Валюта — рубины ♦ (баланс: /rubies, плейсхолдер %kotmiksmenus_rubies%)
+#  Привилегии покупаются на сайте, цена в рубинах равна цене в рублях.
+# ═══════════════════════════════════════════════════════════════
+
+site: "https://donat.kotmir.tech"
+
+format:
+  price: "<gray>Цена: <#ff4d6d>{price} ♦"
+  click-buy: "<#3be05a>▶ Нажми, чтобы купить"
+
+# Кнопка «Назад» для всех подменю
+back-item:
+  material: BARRIER
+  name: "<#ff7777>Вернуться назад"
+  lore:
+    - "<gray>В главное донат-меню"
+
+# ───────────────────────────────────────────────────────────────
+#  Главное меню (36 слотов). section: privileges | любой ключ из sections
+# ───────────────────────────────────────────────────────────────
+main:
+  size: 36
+  title: "<dark_gray>- Донат меню -"
+  items:
+    10:
+      section: privileges
+      material: PLAYER_HEAD
+      head: donate-privileges
+      name: "<#ffaa00>Привилегии"
+      lore:
+        - "<gray>VIP, MVP, HERO, ELITE, GOD, ELY, STAR"
+        - ""
+        - "<#ffaa00>▶ Нажми, чтобы открыть"
+    12:
+      section: kits
+      material: PLAYER_HEAD
+      head: donate-kits
+      name: "<#55ffff>Киты локаций"
+      lore:
+        - "<gray>Наборы для разных локаций"
+        - ""
+        - "<#55ffff>▶ Нажми, чтобы открыть"
+    14:
+      section: tools
+      material: PLAYER_HEAD
+      head: donate-tools
+      name: "<#d946ef>Магазин инструментов"
+      lore:
+        - "<gray>Уникальные инструменты"
+        - ""
+        - "<#d946ef>▶ Нажми, чтобы открыть"
+    16:
+      section: cases
+      material: PLAYER_HEAD
+      head: donate-cases
+      name: "<white>Кейсы"
+      lore:
+        - "<gray>Ключи от кейсов"
+        - ""
+        - "<white>▶ Нажми, чтобы открыть"
+    22:
+      section: items
+      material: TOTEM_OF_UNDYING
+      name: "<#00ff66>Магазин предметов"
+      lore:
+        - "<gray>Предметы за рубины"
+        - ""
+        - "<gray>Ваш баланс: <#ff4d6d>{rubies} ♦"
+        - ""
+        - "<#00ff66>▶ Нажми, чтобы открыть"
+
+# ───────────────────────────────────────────────────────────────
+#  Привилегии (54 слота)
+#  Сетка 7×3: слоты 10..16 — 14 дней, 19..25 — 30 дней, 28..34 — навсегда.
+#  prices: [14 дней, 30 дней, навсегда]
+# ───────────────────────────────────────────────────────────────
+privileges:
+  size: 54
+  title: "<dark_gray>- Привилегии -"
+  back-slot: 47
+  perk-prefix: "<{color}>+ <gray>"
+  howto:
+    slot: 51
+    material: PAPER
+    name: "<#ff7777>Как купить?"
+    lore:
+      - "<gray>Покупка осуществляется через сайт"
+      - "<#ffdd00>donat.kotmir.tech<gray> или в тикетах в дискорде"
+      - ""
+      - "<#ffdd00>▶ Нажми, чтобы получить ссылку"
+  item:
+    material: PLAYER_HEAD
+    name: "{color}{rank} <dark_gray>• <white>{duration}"
+    lore:
+      - ""
+      - "<gray>Возможности:"
+      - "{perks}"
+      - ""
+      - "<gray>Цена: <#ff4d6d>{price} ♦"
+      - ""
+      - "<#ffdd00>▶ Нажми, чтобы узнать, как купить"
+  durations:
+    d14:
+      label: "14 дней"
+      start-slot: 10
+      price-index: 0
+    d30:
+      label: "30 дней"
+      start-slot: 19
+      price-index: 1
+    forever:
+      label: "Навсегда"
+      start-slot: 28
+      price-index: 2
+  ranks:
+    vip:
+      name: "VIP"
+      color: "#ffdd00"
+      head: rank-vip
+      prices: [39, 59, 119]
+      perks:
+        - "/vip — набор 3 локации (раз в день)"
+        - "/feed (откат 120с)"
+        - "/ec"
+        - "Шахта VIP"
+        - "Аукцион: 4"
+    mvp:
+      name: "MVP"
+      color: "#3b82f6"
+      head: rank-mvp
+      prices: [69, 109, 209]
+      perks:
+        - "/mvp — набор 4 локации (раз в день)"
+        - "/feed"
+        - "/ec"
+        - "/dispose"
+        - "Шахта MVP"
+        - "Аукцион: 5"
+    hero:
+      name: "HERO"
+      color: "#ff8800"
+      head: rank-hero
+      prices: [99, 149, 299]
+      perks:
+        - "/hero — набор 5 локации (раз в 2 дня)"
+        - "/feed"
+        - "/ec"
+        - "/dispose"
+        - "/ignore"
+        - "Шахта HERO"
+        - "Аукцион: 6"
+    elite:
+      name: "ELITE"
+      color: "#ff2e93"
+      head: rank-elite
+      prices: [149, 229, 449]
+      perks:
+        - "/elite — набор 6 локации (раз в 2 дня)"
+        - "/feed"
+        - "/ec"
+        - "/dispose"
+        - "/ignore"
+        - "/heal"
+        - "Шахта ELITE"
+        - "Аукцион: 7"
+    god:
+      name: "GOD"
+      color: "#e0e0e0"
+      head: rank-god
+      prices: [219, 329, 659]
+      perks:
+        - "/god — набор 7 локации (раз в 3 дня)"
+        - "/feed"
+        - "/ec"
+        - "/dispose"
+        - "/ignore"
+        - "/heal"
+        - "/ptime"
+        - "/pweather"
+        - "Шахта GOD"
+        - "Аукцион: 8"
+    ely:
+      name: "ELY"
+      color: "#a855f7"
+      head: rank-ely
+      prices: [329, 499, 989]
+      perks:
+        - "/ely — набор 8 локации (раз в 3 дня)"
+        - "/feed"
+        - "/ec"
+        - "/dispose"
+        - "/ignore"
+        - "/inv"
+        - "/heal"
+        - "/ptime"
+        - "/pweather"
+        - "/checkmute"
+        - "Шахта ELY"
+        - "Аукцион: 9"
+    star:
+      name: "STAR"
+      color: "#00ff66"
+      head: rank-star
+      prices: [499, 749, 1499]
+      perks:
+        - "/star — набор 9 локации (раз в 4 дня)"
+        - "/feed"
+        - "/ec"
+        - "/dispose"
+        - "/ignore"
+        - "/inv"
+        - "/heal"
+        - "/ptime"
+        - "/pweather"
+        - "/checkmute"
+        - "/checkban"
+        - "Шахта STAR"
+        - "Аукцион: 10"
+
+# ───────────────────────────────────────────────────────────────
+#  Остальные подменю. Товар: material/name/lore/amount/enchants + price (рубины)
+#  и необязательные commands ({player}, {amount}) — тогда предмет не выдаётся.
+# ───────────────────────────────────────────────────────────────
+sections:
+  kits:
+    size: 36
+    title: "<dark_gray>- Киты локаций -"
+    back-slot: 31
+    items:
+      11:
+        material: NETHERITE_CHESTPLATE
+        name: "<#ff5555>Кит «Незер»"
+        lore:
+          - "<gray>Набор для покорения Незера"
+        price: 99
+        commands:
+          - "kit give {player} nether"
+      13:
+        material: ELYTRA
+        name: "<#a855f7>Кит «Энд»"
+        lore:
+          - "<gray>Набор для покорения Энда"
+        price: 149
+        commands:
+          - "kit give {player} end"
+      15:
+        material: DIAMOND_SWORD
+        name: "<#55ffff>Кит «Бокс»"
+        lore:
+          - "<gray>Набор для PvP на боксе"
+        price: 79
+        commands:
+          - "kit give {player} box"
+  tools:
+    size: 36
+    title: "<dark_gray>- Магазин инструментов -"
+    back-slot: 31
+    items:
+      11:
+        material: NETHERITE_PICKAXE
+        name: "<#d946ef>Кирка «Шахтёр»"
+        lore:
+          - "<gray>Эффективность VII, Прочность III"
+        enchants: { efficiency: 7, unbreaking: 3 }
+        price: 129
+      13:
+        material: NETHERITE_AXE
+        name: "<#d946ef>Топор «Лесоруб»"
+        lore:
+          - "<gray>Эффективность VII, Прочность III"
+        enchants: { efficiency: 7, unbreaking: 3 }
+        price: 109
+      15:
+        material: NETHERITE_SHOVEL
+        name: "<#d946ef>Лопата «Землекоп»"
+        lore:
+          - "<gray>Эффективность VII, Прочность III"
+        enchants: { efficiency: 7, unbreaking: 3 }
+        price: 89
+  cases:
+    size: 36
+    title: "<dark_gray>- Кейсы -"
+    back-slot: 31
+    items:
+      11:
+        material: TRIAL_KEY
+        name: "<#ffdd00>Ключ от монетного кейса"
+        price: 19
+        commands:
+          - "crates givekey {player} coin 1"
+      13:
+        material: TRIAL_KEY
+        name: "<#ff4d6d>Ключ от рубинового кейса"
+        price: 49
+        commands:
+          - "crates givekey {player} ruby 1"
+      15:
+        material: TRIAL_KEY
+        name: "<#d946ef>Ключ от Донат кейса"
+        price: 99
+        commands:
+          - "crates givekey {player} donate 1"
+  items:
+    size: 36
+    title: "<dark_gray>- Магазин предметов -"
+    back-slot: 31
+    items:
+      11:
+        material: ENCHANTED_GOLDEN_APPLE
+        name: "<#d946ef>Зачарованное золотое яблоко"
+        amount: 16
+        price: 59
+      13:
+        material: TOTEM_OF_UNDYING
+        name: "<#ffdd00>Тотем бессмертия"
+        amount: 4
+        price: 39
+      15:
+        material: BEACON
+        name: "<#55ffff>Маяк"
+        amount: 2
+        price: 69
+

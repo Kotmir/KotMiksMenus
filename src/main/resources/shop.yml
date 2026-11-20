@@ -1,0 +1,406 @@
+# ═══════════════════════════════════════════════════════════════
+#  KotMiksMenus — shop.yml (/shop)
+#  Левая колонка (слоты 0,9,18,27,36,45) — вкладки, вторая колонка — разделитель.
+#  Товар:
+#    material / amount / name / lore / enchants / potion / pdc / glow / head — внешний вид и выдача
+#    payment:   money — Vault, item — предмет из инвентаря, none — просто иконка
+#    pay-item:  BEACON или social-coin (соц. коин с PDC-тегом)
+#    price:     цена за одну покупку
+#    shift-stack: true — Shift+ЛКМ покупает stack-size штук (цена × stack-size)
+#    commands:  консольные команды вместо выдачи предмета ({player}, {amount})
+#    money-reward: начислить монеты через Vault вместо выдачи предмета
+# ═══════════════════════════════════════════════════════════════
+
+title: "<dark_gray>- Магазин -"
+stack-size: 64
+
+separator:
+  material: GRAY_STAINED_GLASS_PANE
+  name: " "
+
+# Предмет «Социальный коин» (метка social_coin ставится плагином автоматически).
+# Выдача админом: /kmenus givecoin <игрок> <кол-во>
+social-coin:
+  material: PLAYER_HEAD
+  head: social-coin
+  name: "<#ffdd00>Социальный коин"
+  lore:
+    - "<gray>Валюта за подписку на соцсети"
+    - "<gray>Узнать подробнее: <white>/social"
+
+# Склонения валют: именительный (1), родительный (2-4), множественный (5+)
+pay-names:
+  BEACON: ["маяк", "маяка", "маяков"]
+  social-coin: ["соц. коин", "соц. коина", "соц. коинов"]
+
+format:
+  price: "<gray>Цена: <#ffdd00>{price}"
+  click-buy: "<#3be05a>▶ ЛКМ <gray>— купить"
+  click-stack: "<#3be05a>▶ Shift+ЛКМ <gray>— стак ({stack} шт.) за <white>{price}"
+
+tabs:
+  food:
+    slot: 0
+    icon:
+      material: GOLDEN_CARROT
+      name: "<#ffaa00>Еда"
+      lore:
+        - "<gray>Еда и зелья"
+    items:
+      14:
+        material: COOKED_BEEF
+        amount: 64
+        name: "<white>Стейк"
+        payment: money
+        price: 50
+      22:
+        material: GOLDEN_CARROT
+        amount: 64
+        name: "<white>Золотая морковь"
+        payment: money
+        price: 250
+      23:
+        material: GOLDEN_APPLE
+        name: "<white>Золотое яблоко"
+        payment: money
+        price: 1000
+        shift-stack: true
+      24:
+        material: ENCHANTED_GOLDEN_APPLE
+        name: "<#d946ef>Зачарованное золотое яблоко"
+        payment: money
+        price: 8000
+        shift-stack: true
+      31:
+        material: POTION
+        name: "<#aaaaaa>Зелье невидимости <gray>(3 мин)"
+        potion: { type: invisibility, duration: 180, amplifier: 0 }
+        payment: money
+        price: 150
+      32:
+        material: POTION
+        name: "<#7cc7ff>Зелье стремительности <gray>(3 мин)"
+        potion: { type: speed, duration: 180, amplifier: 0 }
+        payment: money
+        price: 300
+      33:
+        material: POTION
+        name: "<#a855f7>Лив с паутины"
+        lore:
+          - "<gray>Мгновенно освобождает из паутины"
+        potion: { color: "#a855f7" }
+        pdc: { special: web_escape }
+        payment: money
+        price: 450
+  tools:
+    slot: 9
+    icon:
+      material: NETHERITE_PICKAXE
+      name: "<#7cc7ff>Инструменты"
+      lore:
+        - "<gray>Инструменты и снаряжение"
+    items:
+      14:
+        material: NETHERITE_PICKAXE
+        name: "<white>Кирка незеритовая <gray>1 ур."
+        enchants: { efficiency: 1 }
+        payment: money
+        price: 500
+      22:
+        material: STONE_AXE
+        name: "<white>Топор каменный <gray>1 ур."
+        enchants: { efficiency: 1 }
+        payment: money
+        price: 1000
+      23:
+        material: STONE_SHOVEL
+        name: "<white>Лопата каменная <gray>1 ур."
+        enchants: { efficiency: 1 }
+        payment: money
+        price: 1000
+      24:
+        material: STONE_HOE
+        name: "<white>Мотыга каменная <gray>1 ур."
+        enchants: { efficiency: 1 }
+        payment: money
+        price: 1000
+      32:
+        material: SHEARS
+        name: "<white>Ножницы"
+        enchants: { efficiency: 5 }
+        payment: money
+        price: 1000
+      41:
+        material: FISHING_ROD
+        name: "<white>Удочка"
+        lore:
+          - "<#ffaa00>Сохранение при смерти <white>1 ур."
+        pdc: { keep_on_death: "1" }
+        payment: money
+        price: 1000
+      50:
+        material: ROTTEN_FLESH
+        name: "<#c08a5a>Червь наживка"
+        payment: money
+        price: 100
+        shift-stack: true
+  pvp:
+    slot: 18
+    icon:
+      material: COBWEB
+      name: "<#ff5555>PvP штучки"
+      lore:
+        - "<gray>Всё для боя"
+    items:
+      22:
+        material: FIREWORK_ROCKET
+        amount: 64
+        name: "<white>Фейерверки"
+        payment: money
+        price: 50
+      23:
+        material: SNOWBALL
+        amount: 16
+        name: "<white>Снежки"
+        payment: money
+        price: 20
+      24:
+        material: COBWEB
+        name: "<white>Паутина"
+        payment: money
+        price: 200
+        shift-stack: true
+      30:
+        material: SPRUCE_PLANKS
+        name: "<white>Еловые доски"
+        payment: money
+        price: 50
+        shift-stack: true
+      31:
+        material: SUGAR
+        name: "<#ff6b6b>Явная пыль"
+        lore:
+          - "<gray>Подсвечивает невидимых игроков"
+        pdc: { special: reveal_dust }
+        payment: money
+        price: 500
+        shift-stack: true
+      32:
+        material: HONEYCOMB
+        name: "<#ffdd00>Маленькая трапка"
+        lore:
+          - "<gray>Сфера диаметром <white>5<gray> блоков"
+        pdc: { special: small_trap }
+        payment: money
+        price: 10000
+        shift-stack: true
+      33:
+        material: HEAVY_CORE
+        name: "<#b0b0b0>Стан"
+        lore:
+          - "<gray>Оглушает противников на <white>5<gray> сек."
+        pdc: { special: stun }
+        payment: money
+        price: 3000
+        shift-stack: true
+      34:
+        material: SPRUCE_SLAB
+        name: "<white>Еловая плита"
+        payment: money
+        price: 100
+        shift-stack: true
+      40:
+        material: POPPED_CHORUS_FRUIT
+        name: "<#d946ef>Большая трапка"
+        pdc: { special: big_trap }
+        payment: money
+        price: 10000
+        shift-stack: true
+      42:
+        material: HEART_OF_THE_SEA
+        name: "<#3be0a0>Эндер трапка"
+        pdc: { special: ender_trap }
+        payment: money
+        price: 20000
+        shift-stack: true
+  beacons:
+    slot: 27
+    icon:
+      material: BEACON
+      name: "<#55ffff>Обмен маяков"
+      lore:
+        - "<gray>Оплата: <white>1 маяк"
+    items:
+      22:
+        material: TOTEM_OF_UNDYING
+        name: "<#ffdd00>Тотем бессмертия"
+        payment: item
+        pay-item: BEACON
+        price: 1
+      23:
+        material: STICK
+        name: "<#d946ef>Магическая палочка"
+        glow: true
+        pdc: { special: magic_wand }
+        payment: item
+        pay-item: BEACON
+        price: 1
+      24:
+        material: GOLD_INGOT
+        name: "<#ffdd00>10 000 монет"
+        lore:
+          - "<gray>Монеты зачисляются на ваш счёт"
+        payment: item
+        pay-item: BEACON
+        price: 1
+        money-reward: 10000
+  shulkers:
+    slot: 36
+    icon:
+      material: WHITE_SHULKER_BOX
+      name: "<#d946ef>Шалкеры"
+      lore:
+        - "<gray>Все цвета по <#ffdd00>5.000 ◉"
+    items:
+      12:
+        material: WHITE_SHULKER_BOX
+        name: "<white>Белый шалкер"
+        payment: money
+        price: 5000
+      13:
+        material: ORANGE_SHULKER_BOX
+        name: "<white>Оранжевый шалкер"
+        payment: money
+        price: 5000
+      14:
+        material: MAGENTA_SHULKER_BOX
+        name: "<white>Пурпурный шалкер"
+        payment: money
+        price: 5000
+      15:
+        material: LIGHT_BLUE_SHULKER_BOX
+        name: "<white>Голубой шалкер"
+        payment: money
+        price: 5000
+      16:
+        material: YELLOW_SHULKER_BOX
+        name: "<white>Жёлтый шалкер"
+        payment: money
+        price: 5000
+      21:
+        material: LIME_SHULKER_BOX
+        name: "<white>Лаймовый шалкер"
+        payment: money
+        price: 5000
+      22:
+        material: PINK_SHULKER_BOX
+        name: "<white>Розовый шалкер"
+        payment: money
+        price: 5000
+      23:
+        material: GRAY_SHULKER_BOX
+        name: "<white>Серый шалкер"
+        payment: money
+        price: 5000
+      24:
+        material: LIGHT_GRAY_SHULKER_BOX
+        name: "<white>Светло-серый шалкер"
+        payment: money
+        price: 5000
+      25:
+        material: CYAN_SHULKER_BOX
+        name: "<white>Бирюзовый шалкер"
+        payment: money
+        price: 5000
+      30:
+        material: PURPLE_SHULKER_BOX
+        name: "<white>Фиолетовый шалкер"
+        payment: money
+        price: 5000
+      31:
+        material: BLUE_SHULKER_BOX
+        name: "<white>Синий шалкер"
+        payment: money
+        price: 5000
+      32:
+        material: BROWN_SHULKER_BOX
+        name: "<white>Коричневый шалкер"
+        payment: money
+        price: 5000
+      33:
+        material: GREEN_SHULKER_BOX
+        name: "<white>Зелёный шалкер"
+        payment: money
+        price: 5000
+      34:
+        material: RED_SHULKER_BOX
+        name: "<white>Красный шалкер"
+        payment: money
+        price: 5000
+      41:
+        material: BLACK_SHULKER_BOX
+        name: "<white>Чёрный шалкер"
+        payment: money
+        price: 5000
+  social:
+    slot: 45
+    icon:
+      material: PLAYER_HEAD
+      name: "<#ffdd00>Социальный коин"
+      lore:
+        - "<gray>Валюта за соцсети"
+      head: social-coin
+    items:
+      14:
+        material: BOOK
+        name: "<#ffdd00>Что такое соц. коин?"
+        lore:
+          - ""
+          - "<gray>Соц. коины выдаются:"
+          - "<#ffdd00> • <gray>в китах привилегий"
+          - "<#ffdd00> • <gray>за подписку в Telegram / Discord"
+          - "<#ffdd00> • <gray>команда <white>/social"
+        payment: none
+      22:
+        material: GOLDEN_CARROT
+        amount: 64
+        name: "<white>Золотая морковь"
+        payment: item
+        pay-item: social-coin
+        price: 1
+      23:
+        material: GOLDEN_APPLE
+        name: "<white>Золотое яблоко"
+        payment: item
+        pay-item: social-coin
+        price: 2
+      24:
+        material: ENCHANTED_GOLDEN_APPLE
+        name: "<#d946ef>Зачарованное золотое яблоко"
+        payment: item
+        pay-item: social-coin
+        price: 4
+      31:
+        material: TRIAL_KEY
+        name: "<#ffdd00>Ключ от монетного кейса"
+        payment: item
+        pay-item: social-coin
+        price: 16
+        commands:
+          - "crates givekey {player} coin 1"
+      32:
+        material: TRIAL_KEY
+        name: "<#ff4d6d>Ключ от рубинового кейса"
+        payment: item
+        pay-item: social-coin
+        price: 32
+        commands:
+          - "crates givekey {player} ruby 1"
+      33:
+        material: TRIAL_KEY
+        name: "<#d946ef>Ключ от Донат кейса"
+        payment: item
+        pay-item: social-coin
+        price: 64
+        commands:
+          - "crates givekey {player} donate 1"

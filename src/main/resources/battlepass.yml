@@ -1,0 +1,377 @@
+# ═══════════════════════════════════════════════════════════════
+#  KotMiksMenus — battlepass.yml (/bp, /battlepass)
+#  Валюта — батл-коины. Админ: /bp coins <give|take|set|balance> <игрок> [кол-во]
+#  Уровни забираются строго по порядку за батл-коины (стоимость списывается).
+#  Награды (rewards):
+#    item:МАТЕРИАЛ:кол-во · money:сумма · rubies:кол-во · bpcoins:кол-во · cmd:команда
+#  Страница вмещает 15 уровней (змейка) — уровней можно добавлять сколько нужно.
+# ═══════════════════════════════════════════════════════════════
+
+menu:
+  title: "<dark_gray>- Батл-пасс [{page}/{pages}] -"
+  level-next:
+    material: WHITE_STAINED_GLASS_PANE
+    name: "<#6ec1ff>¤ <white>Уровень <#6ec1ff>{level}"
+    glow: true
+    lore:
+      - ""
+      - "<#6ec1ff>Стоимость"
+      - " <gray>Нужно батл-коинов: <white>[{coins}/{cost}]"
+      - ""
+      - "<#6ec1ff>Награда"
+      - " <white>{reward}"
+      - ""
+      - "<#3be05a>▶ Нажми, чтобы забрать"
+  level-locked:
+    material: BARRIER
+    name: "<#6ec1ff>¤ <white>Уровень <#6ec1ff>{level}"
+    lore:
+      - ""
+      - "<#6ec1ff>Стоимость"
+      - " <gray>Нужно батл-коинов: <white>[{coins}/{cost}]"
+      - ""
+      - "<#6ec1ff>Награда"
+      - " <white>{reward}"
+      - ""
+      - "<red>✖ Сначала пройдите предыдущие уровни"
+  level-claimed:
+    material: LIME_STAINED_GLASS_PANE
+    name: "<#6ec1ff>¤ <white>Уровень <#6ec1ff>{level}"
+    lore:
+      - ""
+      - "<#6ec1ff>Награда"
+      - " <white>{reward}"
+      - ""
+      - "<#3be05a>✔ Награда получена"
+  prev:
+    material: STONE_BUTTON
+    name: "<white>← Предыдущая страница"
+  next:
+    material: STONE_BUTTON
+    name: "<white>Следующая страница →"
+  weekly:
+    material: HONEYCOMB
+    name: "<#6ec1ff>Еженедельные <white>задания"
+    lore:
+      - "<gray>Обновляются раз в неделю."
+      - "<gray>Выполняй и получай батл-коины <white>/bp"
+      - ""
+      - "<#6ec1ff>▶ Нажми, чтобы открыть"
+  daily:
+    material: SUNFLOWER
+    name: "<#6ec1ff>Ежедневные <white>задания"
+    lore:
+      - "<gray>Обновляются каждый день."
+      - "<gray>Выполняй и получай батл-коины <white>/bp"
+      - ""
+      - "<#6ec1ff>▶ Нажми, чтобы открыть"
+  info:
+    material: PAPER
+    name: "<white>Батл-пасс <#6ec1ff>{player}"
+    lore:
+      - ""
+      - "<gray>Батл-коинов: <#6ec1ff>{coins}"
+      - "<gray>Пройдено уровней: <white>{claimed}<gray>/<white>{total}"
+      - ""
+      - "<#6ec1ff>Следующий уровень"
+      - " <gray>Уровень: <white>{level}"
+      - " <gray>Цена: <white>{cost}"
+      - " <gray>Не хватает: <red>{missing}"
+  info-max:
+    material: PAPER
+    name: "<white>Батл-пасс <#6ec1ff>{player}"
+    lore:
+      - ""
+      - "<gray>Батл-коинов: <#6ec1ff>{coins}"
+      - "<gray>Пройдено уровней: <white>{claimed}<gray>/<white>{total}"
+      - ""
+      - "<#3be05a>✔ Все уровни пройдены!"
+  back:
+    material: ARROW
+    name: "<white>← Назад"
+
+# ───────── Задания ─────────
+# count — сколько заданий из pool выбирается на период (одинаково для всех игроков).
+# type: BREAK_BLOCK | PLACE_BLOCK | KILL_PLAYER | KILL_MOB | FISH
+# keys: список материалов/типов мобов (пусто — любые)
+daily-tasks:
+  title: "<dark_gray>- Ежедневные задания -"
+  count: 3
+  item:
+    material: BOOK
+    name: "<#6ec1ff>{name}"
+    lore:
+      - ""
+      - "<gray>Прогресс: <white>{current}<gray>/<white>{amount}"
+      - "<gray>Награда: <#6ec1ff>+{coins} батл-коин(ов)"
+  item-done:
+    material: LIME_CONCRETE
+    name: "<#3be05a>✔ {name}"
+    lore:
+      - ""
+      - "<gray>Выполнено, награда получена"
+      - "<gray>Награда: <#6ec1ff>+{coins} батл-коин(ов)"
+  pool:
+    stone:      { name: "Добыть 200 камня",            type: BREAK_BLOCK, keys: [STONE, DEEPSLATE, COBBLESTONE], amount: 200, coins: 1 }
+    diamonds:   { name: "Добыть 10 алмазной руды",     type: BREAK_BLOCK, keys: [DIAMOND_ORE, DEEPSLATE_DIAMOND_ORE], amount: 10, coins: 2 }
+    debris:     { name: "Добыть 3 древних обломка",    type: BREAK_BLOCK, keys: [ANCIENT_DEBRIS], amount: 3, coins: 2 }
+    logs:       { name: "Срубить 50 брёвен",           type: BREAK_BLOCK, keys: [OAK_LOG, BIRCH_LOG, SPRUCE_LOG, JUNGLE_LOG, ACACIA_LOG, DARK_OAK_LOG, MANGROVE_LOG, CHERRY_LOG], amount: 50, coins: 1 }
+    kill_pl:    { name: "Убить 3 игроков",             type: KILL_PLAYER, amount: 3, coins: 2 }
+    zombies:    { name: "Убить 20 зомби",              type: KILL_MOB, keys: [ZOMBIE], amount: 20, coins: 1 }
+    skeletons:  { name: "Убить 20 скелетов",           type: KILL_MOB, keys: [SKELETON], amount: 20, coins: 1 }
+    fish:       { name: "Поймать 10 рыб",              type: FISH, amount: 10, coins: 1 }
+    place:      { name: "Поставить 300 блоков",        type: PLACE_BLOCK, amount: 300, coins: 1 }
+
+weekly-tasks:
+  title: "<dark_gray>- Еженедельные задания -"
+  count: 4
+  item:
+    material: BOOK
+    name: "<#6ec1ff>{name}"
+    lore:
+      - ""
+      - "<gray>Прогресс: <white>{current}<gray>/<white>{amount}"
+      - "<gray>Награда: <#6ec1ff>+{coins} батл-коин(ов)"
+  item-done:
+    material: LIME_CONCRETE
+    name: "<#3be05a>✔ {name}"
+    lore:
+      - ""
+      - "<gray>Выполнено, награда получена"
+      - "<gray>Награда: <#6ec1ff>+{coins} батл-коин(ов)"
+  pool:
+    kill_pl:    { name: "Убить 25 игроков",            type: KILL_PLAYER, amount: 25, coins: 6 }
+    diamonds:   { name: "Добыть 100 алмазной руды",     type: BREAK_BLOCK, keys: [DIAMOND_ORE, DEEPSLATE_DIAMOND_ORE], amount: 100, coins: 5 }
+    fish:       { name: "Поймать 100 рыб",              type: FISH, amount: 100, coins: 4 }
+    mobs:       { name: "Убить 300 мобов",              type: KILL_MOB, amount: 300, coins: 4 }
+    debris:     { name: "Добыть 20 древних обломков",   type: BREAK_BLOCK, keys: [ANCIENT_DEBRIS], amount: 20, coins: 5 }
+    place:      { name: "Поставить 3000 блоков",        type: PLACE_BLOCK, amount: 3000, coins: 3 }
+    mine:       { name: "Добыть 2000 блоков",           type: BREAK_BLOCK, amount: 2000, coins: 3 }
+
+# ───────── Уровни ─────────
+levels:
+  1:
+    cost: 2
+    reward-text: "Золотое яблоко x8"
+    rewards:
+      - "item:GOLDEN_APPLE:8"
+  2:
+    cost: 2
+    reward-text: "2.000 ◉"
+    rewards:
+      - "money:2000"
+  3:
+    cost: 3
+    reward-text: "Зачарованное золотое яблоко x1"
+    rewards:
+      - "item:ENCHANTED_GOLDEN_APPLE:1"
+  4:
+    cost: 3
+    reward-text: "2 ♦"
+    rewards:
+      - "rubies:2"
+  5:
+    cost: 4
+    reward-text: "Обычный ящик x1"
+    rewards:
+      - "cmd:crates give {player} common 1"
+  6:
+    cost: 4
+    reward-text: "Золотая морковь x22"
+    rewards:
+      - "item:GOLDEN_CARROT:22"
+  7:
+    cost: 5
+    reward-text: "7.000 ◉"
+    rewards:
+      - "money:7000"
+  8:
+    cost: 5
+    reward-text: "Зачарованное золотое яблоко x1"
+    rewards:
+      - "item:ENCHANTED_GOLDEN_APPLE:1"
+  9:
+    cost: 6
+    reward-text: "3 ♦"
+    rewards:
+      - "rubies:3"
+  10:
+    cost: 6
+    reward-text: "Обычный ящик x2"
+    rewards:
+      - "cmd:crates give {player} common 2"
+  11:
+    cost: 7
+    reward-text: "Золотая морковь x27"
+    rewards:
+      - "item:GOLDEN_CARROT:27"
+  12:
+    cost: 7
+    reward-text: "12.000 ◉"
+    rewards:
+      - "money:12000"
+  13:
+    cost: 8
+    reward-text: "Зачарованное золотое яблоко x2"
+    rewards:
+      - "item:ENCHANTED_GOLDEN_APPLE:2"
+  14:
+    cost: 8
+    reward-text: "4 ♦"
+    rewards:
+      - "rubies:4"
+  15:
+    cost: 9
+    reward-text: "Ключ от Донат кейса"
+    rewards:
+      - "cmd:crates givekey {player} donate 1"
+  16:
+    cost: 9
+    reward-text: "Золотая морковь x32"
+    rewards:
+      - "item:GOLDEN_CARROT:32"
+  17:
+    cost: 10
+    reward-text: "17.000 ◉"
+    rewards:
+      - "money:17000"
+  18:
+    cost: 10
+    reward-text: "Зачарованное золотое яблоко x2"
+    rewards:
+      - "item:ENCHANTED_GOLDEN_APPLE:2"
+  19:
+    cost: 11
+    reward-text: "5 ♦"
+    rewards:
+      - "rubies:5"
+  20:
+    cost: 11
+    reward-text: "Обычный ящик x4"
+    rewards:
+      - "cmd:crates give {player} common 4"
+  21:
+    cost: 12
+    reward-text: "Золотая морковь x37"
+    rewards:
+      - "item:GOLDEN_CARROT:37"
+  22:
+    cost: 12
+    reward-text: "22.000 ◉"
+    rewards:
+      - "money:22000"
+  23:
+    cost: 13
+    reward-text: "Зачарованное золотое яблоко x3"
+    rewards:
+      - "item:ENCHANTED_GOLDEN_APPLE:3"
+  24:
+    cost: 13
+    reward-text: "7 ♦"
+    rewards:
+      - "rubies:7"
+  25:
+    cost: 14
+    reward-text: "Обычный ящик x5"
+    rewards:
+      - "cmd:crates give {player} common 5"
+  26:
+    cost: 14
+    reward-text: "Золотая морковь x42"
+    rewards:
+      - "item:GOLDEN_CARROT:42"
+  27:
+    cost: 15
+    reward-text: "27.000 ◉"
+    rewards:
+      - "money:27000"
+  28:
+    cost: 15
+    reward-text: "Зачарованное золотое яблоко x3"
+    rewards:
+      - "item:ENCHANTED_GOLDEN_APPLE:3"
+  29:
+    cost: 16
+    reward-text: "8 ♦"
+    rewards:
+      - "rubies:8"
+  30:
+    cost: 16
+    reward-text: "Ключ от Донат кейса"
+    rewards:
+      - "cmd:crates givekey {player} donate 1"
+  31:
+    cost: 17
+    reward-text: "Золотая морковь x47"
+    rewards:
+      - "item:GOLDEN_CARROT:47"
+  32:
+    cost: 17
+    reward-text: "32.000 ◉"
+    rewards:
+      - "money:32000"
+  33:
+    cost: 18
+    reward-text: "Зачарованное золотое яблоко x4"
+    rewards:
+      - "item:ENCHANTED_GOLDEN_APPLE:4"
+  34:
+    cost: 18
+    reward-text: "9 ♦"
+    rewards:
+      - "rubies:9"
+  35:
+    cost: 19
+    reward-text: "Обычный ящик x7"
+    rewards:
+      - "cmd:crates give {player} common 7"
+  36:
+    cost: 19
+    reward-text: "Золотая морковь x52"
+    rewards:
+      - "item:GOLDEN_CARROT:52"
+  37:
+    cost: 20
+    reward-text: "37.000 ◉"
+    rewards:
+      - "money:37000"
+  38:
+    cost: 20
+    reward-text: "Зачарованное золотое яблоко x4"
+    rewards:
+      - "item:ENCHANTED_GOLDEN_APPLE:4"
+  39:
+    cost: 21
+    reward-text: "10 ♦"
+    rewards:
+      - "rubies:10"
+  40:
+    cost: 21
+    reward-text: "Обычный ящик x8"
+    rewards:
+      - "cmd:crates give {player} common 8"
+  41:
+    cost: 22
+    reward-text: "Золотая морковь x57"
+    rewards:
+      - "item:GOLDEN_CARROT:57"
+  42:
+    cost: 22
+    reward-text: "42.000 ◉"
+    rewards:
+      - "money:42000"
+  43:
+    cost: 23
+    reward-text: "Зачарованное золотое яблоко x5"
+    rewards:
+      - "item:ENCHANTED_GOLDEN_APPLE:5"
+  44:
+    cost: 23
+    reward-text: "12 ♦"
+    rewards:
+      - "rubies:12"
+  45:
+    cost: 24
+    reward-text: "Ключ от Донат кейса"
+    rewards:
+      - "cmd:crates givekey {player} donate 1"

@@ -1,0 +1,81 @@
+name: KotMiksMenus
+version: '${version}'
+main: tech.kotmir.kotmiksmenus.KotMiksMenus
+api-version: '1.21'
+description: Все основные GUI-меню сервера в одном плагине
+author: KotMir
+website: https://donat.kotmir.tech
+softdepend: [Vault, PlaceholderAPI, PlayerPoints]
+
+commands:
+  kmenus:
+    description: Админ-команда KotMiksMenus
+    usage: /kmenus <reload|givecoin>
+    permission: kotmiksmenus.admin
+  rubies:
+    description: Управление рубинами
+    usage: /rubies <give|take|set|balance> <игрок> [кол-во]
+    permission: kotmiksmenus.admin
+  shop:
+    description: Магазин
+    permission: kotmiksmenus.shop
+  social:
+    description: Привязка соцсетей
+    permission: kotmiksmenus.social
+  daily:
+    description: Ежедневная награда
+    permission: kotmiksmenus.daily
+  kills:
+    description: Награды за убийства
+    aliases: [killrewards]
+    permission: kotmiksmenus.kills
+  donate:
+    description: Донат-меню
+    permission: kotmiksmenus.donate
+  titles:
+    description: Титулы
+    aliases: [title]
+    permission: kotmiksmenus.titles
+  base:
+    description: Базы игроков
+    aliases: [bases]
+    permission: kotmiksmenus.base
+  killeffects:
+    description: Эффекты убийства
+    permission: kotmiksmenus.killeffects
+  bp:
+    description: Батл-пасс
+    aliases: [battlepass]
+    permission: kotmiksmenus.bp
+  quests:
+    description: Начальные квесты
+    aliases: [quest]
+    permission: kotmiksmenus.quests
+
+permissions:
+  kotmiksmenus.admin:
+    description: Администрирование KotMiksMenus
+    default: op
+  kotmiksmenus.bases.bypass:
+    description: Обход защиты баз
+    default: op
+  kotmiksmenus.shop:
+    default: true
+  kotmiksmenus.social:
+    default: true
+  kotmiksmenus.daily:
+    default: true
+  kotmiksmenus.kills:
+    default: true
+  kotmiksmenus.donate:
+    default: true
+  kotmiksmenus.titles:
+    default: true
+  kotmiksmenus.base:
+    default: true
+  kotmiksmenus.killeffects:
+    default: true
+  kotmiksmenus.bp:
+    default: true
+  kotmiksmenus.quests:
+    default: true

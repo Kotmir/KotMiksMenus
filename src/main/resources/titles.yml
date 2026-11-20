@@ -1,0 +1,213 @@
+# ═══════════════════════════════════════════════════════════════
+#  KotMiksMenus — titles.yml (/titles, /title)
+#  Админ-команда: /titles give <игрок> <id_титула>
+#  Плейсхолдер выбранного титула: %kotmiksmenus_title%
+#  Титулы показываются по 18 на страницу, страниц может быть сколько угодно.
+# ═══════════════════════════════════════════════════════════════
+
+title: "<dark_gray>- Титулы -"
+
+info:
+  slot: 4
+  material: PAPER
+  name: "<white>Титулы"
+  lore:
+    - "<gray>Титул отображается рядом с вашим ником."
+    - ""
+    - "<gray>Редкости:"
+    - "<#00ff66> • Обычные <dark_gray>— <#ff4d6d>29 ♦"
+    - "<#3b82f6> • Редкие <dark_gray>— <#ff4d6d>59 ♦"
+    - "<#a855f7> • Эпические <dark_gray>— <#ff4d6d>99 ♦"
+    - "<#ffaa00> • Легендарные <dark_gray>— <#ff4d6d>149 ♦"
+
+clear:
+  slot: 22
+  material: TURTLE_EGG
+  name: "<#3be0a0>Очистить титул"
+  lore:
+    - "<gray>Сейчас: {title}"
+    - ""
+    - "<#3be0a0>▶ Нажми, чтобы убрать титул"
+
+submenu:
+  title: "<dark_gray>- {rarity} титулы [{page}/{pages}] -"
+  filler: GRAY_STAINED_GLASS_PANE
+  prev:
+    slot: 30
+    material: ARROW
+    name: "<white>← Назад"
+  next:
+    slot: 32
+    material: ARROW
+    name: "<white>Вперёд →"
+  back:
+    slot: 31
+    material: BARRIER
+    name: "<#ff7777>Вернуться назад"
+  # Состояния титула: selected — выбран, owned — куплен, locked — закрыт
+  title-item:
+    selected:
+      material: NAME_TAG
+      name: "{display}"
+      glow: true
+      lore:
+        - ""
+        - "<gray>Предпросмотр: <white>{player} {display}"
+        - ""
+        - "<#3be05a>✔ Выбран"
+    owned:
+      material: NAME_TAG
+      name: "{display}"
+      lore:
+        - ""
+        - "<gray>Предпросмотр: <white>{player} {display}"
+        - ""
+        - "<#3be05a>▶ ЛКМ <gray>— выбрать"
+    locked:
+      material: NAME_TAG
+      name: "{display}"
+      lore:
+        - ""
+        - "<gray>Предпросмотр: <white>{player} {display}"
+        - "<gray>Редкость: {rarity}"
+        - ""
+        - "<gray>Цена: <#ff4d6d>{price} ♦"
+        - "<#ffdd00>▶ ПКМ <gray>— купить"
+
+rarities:
+  common:
+    slot: 10
+    price: 29
+    name: "<#00ff66>Обычные"
+    material: PLAYER_HEAD
+    head: title-common
+    lore:
+      - "<gray>Титулы редкости <#00ff66>Обычные"
+      - ""
+      - "<gray>Цена каждого: <#ff4d6d>{price} ♦"
+      - "<gray>Открыто: <white>{owned}<gray>/<white>{total}"
+      - ""
+      - "<#00ff66>▶ Нажми, чтобы открыть"
+    titles:
+      novice: "<#00ff66>[Новичок]"
+      traveler: "<#00ff66>[Путник]"
+      miner: "<#00ff66>[Шахтёр]"
+      farmer: "<#00ff66>[Фермер]"
+      fisher: "<#00ff66>[Рыбак]"
+      hunter: "<#00ff66>[Охотник]"
+      builder: "<#00ff66>[Строитель]"
+      trader: "<#00ff66>[Торговец]"
+      explorer: "<#00ff66>[Исследователь]"
+      lumberjack: "<#00ff66>[Дровосек]"
+      smith: "<#00ff66>[Кузнец]"
+      cook: "<#00ff66>[Повар]"
+      wanderer: "<#00ff66>[Скиталец]"
+      digger: "<#00ff66>[Копатель]"
+      mushroomer: "<#00ff66>[Грибник]"
+      daredevil: "<#00ff66>[Смельчак]"
+      tramp: "<#00ff66>[Бродяга]"
+      reveler: "<#00ff66>[Гуляка]"
+      dreamer: "<#00ff66>[Мечтатель]"
+      lucky: "<#00ff66>[Везунчик]"
+  rare:
+    slot: 12
+    price: 59
+    name: "<#3b82f6>Редкие"
+    material: PLAYER_HEAD
+    head: title-rare
+    lore:
+      - "<gray>Титулы редкости <#3b82f6>Редкие"
+      - ""
+      - "<gray>Цена каждого: <#ff4d6d>{price} ♦"
+      - "<gray>Открыто: <white>{owned}<gray>/<white>{total}"
+      - ""
+      - "<#3b82f6>▶ Нажми, чтобы открыть"
+    titles:
+      warrior: "<#3b82f6>[Воин]"
+      guardian: "<#3b82f6>[Страж]"
+      tracker: "<#3b82f6>[Следопыт]"
+      alchemist: "<#3b82f6>[Алхимик]"
+      enchanter: "<#3b82f6>[Зачарователь]"
+      cartographer: "<#3b82f6>[Картограф]"
+      ranger: "<#3b82f6>[Рейнджер]"
+      mercenary: "<#3b82f6>[Наёмник]"
+      duelist: "<#3b82f6>[Дуэлянт]"
+      archer: "<#3b82f6>[Лучник]"
+      warlock: "<#3b82f6>[Колдун]"
+      paladin: "<#3b82f6>[Паладин]"
+      scout: "<#3b82f6>[Разведчик]"
+      berserk: "<#3b82f6>[Берсерк]"
+      trapper: "<#3b82f6>[Ловчий]"
+      treasure_hunter: "<#3b82f6>[Кладоискатель]"
+      shadow: "<#3b82f6>[Тень]"
+      knight: "<#3b82f6>[Рыцарь]"
+      marauder: "<#3b82f6>[Мародёр]"
+      sniper: "<#3b82f6>[Стрелок]"
+  epic:
+    slot: 14
+    price: 99
+    name: "<#a855f7>Эпические"
+    material: PLAYER_HEAD
+    head: title-epic
+    lore:
+      - "<gray>Титулы редкости <#a855f7>Эпические"
+      - ""
+      - "<gray>Цена каждого: <#ff4d6d>{price} ♦"
+      - "<gray>Открыто: <white>{owned}<gray>/<white>{total}"
+      - ""
+      - "<#a855f7>▶ Нажми, чтобы открыть"
+    titles:
+      killer: "<#a855f7>[Убийца]"
+      executioner: "<#a855f7>[Палач]"
+      ghost: "<#a855f7>[Призрак]"
+      box_terror: "<#a855f7>[Гроза боксов]"
+      fire_lord: "<#a855f7>[Повелитель огня]"
+      ice_king: "<#a855f7>[Ледяной король]"
+      shadow_blade: "<#a855f7>[Теневой клинок]"
+      keeper: "<#a855f7>[Хранитель]"
+      nether_conqueror: "<#a855f7>[Покоритель Незера]"
+      dragon_slayer: "<#a855f7>[Охотник на драконов]"
+      mage: "<#a855f7>[Маг]"
+      necromancer: "<#a855f7>[Некромант]"
+      sorcerer: "<#a855f7>[Чародей]"
+      storm_herald: "<#a855f7>[Вестник бури]"
+      mine_master: "<#a855f7>[Хозяин шахт]"
+      nightmare: "<#a855f7>[Ночной кошмар]"
+      crusher: "<#a855f7>[Крушитель]"
+      thunderer: "<#a855f7>[Громовержец]"
+      abyss_guard: "<#a855f7>[Страж бездны]"
+      blade_master: "<#a855f7>[Мастер клинка]"
+  legendary:
+    slot: 16
+    price: 149
+    name: "<#ffaa00>Легендарные"
+    material: PLAYER_HEAD
+    head: title-legendary
+    lore:
+      - "<gray>Титулы редкости <#ffaa00>Легендарные"
+      - ""
+      - "<gray>Цена каждого: <#ff4d6d>{price} ♦"
+      - "<gray>Открыто: <white>{owned}<gray>/<white>{total}"
+      - ""
+      - "<#ffaa00>▶ Нажми, чтобы открыть"
+    titles:
+      legend: "<#ffaa00>[Легенда]"
+      absolute: "<#ffaa00>[Абсолют]"
+      immortal: "<#ffaa00>[Бессмертный]"
+      sovereign: "<#ffaa00>[Владыка]"
+      emperor: "<#ffaa00>[Император]"
+      titan: "<#ffaa00>[Титан]"
+      world_lord: "<#ffaa00>[Повелитель миров]"
+      phoenix: "<#ffaa00>[Феникс]"
+      server_king: "<#ffaa00>[Король сервера]"
+      archon: "<#ffaa00>[Архонт]"
+      abyss_lord: "<#ffaa00>[Властелин бездны]"
+      eternity_keeper: "<#ffaa00>[Хранитель вечности]"
+      dragonbane: "<#ffaa00>[Драконоборец]"
+      war_god: "<#ffaa00>[Бог войны]"
+      cursed_king: "<#ffaa00>[Проклятый король]"
+      world_bearer: "<#ffaa00>[Мироносец]"
+      dragon: "<#ffaa00>[Дракон]"
+      star_wanderer: "<#ffaa00>[Звёздный странник]"
+      chosen: "<#ffaa00>[Избранный]"
+      eternal: "<#ffaa00>[Вечный]"

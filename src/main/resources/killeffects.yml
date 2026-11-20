@@ -1,0 +1,198 @@
+# ═══════════════════════════════════════════════════════════════
+#  KotMiksMenus — killeffects.yml (/killeffects)
+#  ЛКМ — купить за рубины / выбрать, ПКМ — предпросмотр.
+#  До 27 эффектов (слоты 0..26).
+#
+#  Действия (actions):
+#    PARTICLE:ИМЯ:количество:разброс[:скорость]   — частицы (Particle из Bukkit)
+#    SOUND:ключ.звука:громкость:тон               — звук (ключ как в игре: entity.lightning_bolt.thunder)
+#    LIGHTNING                                    — визуальная молния без урона
+#    FIREWORK:#RRGGBB                             — мгновенный фейерверк
+# ═══════════════════════════════════════════════════════════════
+
+title: "<dark_gray>Эффекты убийства"
+
+format:
+  price: "<gray>Цена: <#ff4d6d>{price} ♦"
+  owned: "<#3be05a>✔ Куплено"
+  selected: "<#3be05a>✔ Выбрано"
+  click-buy: "<#3be05a>▶ ЛКМ <gray>— купить"
+  click-select: "<#3be05a>▶ ЛКМ <gray>— выбрать"
+  click-preview: "<#ffdd00>▶ ПКМ <gray>— предпросмотр"
+
+clear:
+  slot: 31
+  material: BARRIER
+  name: "<#ff7777>Отключить эффект"
+  lore:
+    - "<gray>Убирает выбранный эффект"
+
+effects:
+  absorb_light:
+    material: GLOW_BERRIES
+    name: "<#ffe066>Поглощение света"
+    lore: ["<gray>Свет души жертвы стекается к вам"]
+    price: 199
+    actions:
+      - "PARTICLE:GLOW:40:0.6:0.05"
+      - "PARTICLE:END_ROD:25:0.5:0.08"
+      - "SOUND:block.amethyst_block.chime:1:1.2"
+  lightning:
+    material: LIGHTNING_ROD
+    name: "<#ffee55>Молния"
+    lore: ["<gray>Удар молнии без урона"]
+    price: 99
+    actions:
+      - "LIGHTNING"
+  explosion:
+    material: TNT
+    name: "<#ff5555>Взрыв"
+    lore: ["<gray>Громкий и яркий взрыв"]
+    price: 79
+    actions:
+      - "PARTICLE:EXPLOSION:1:0"
+      - "SOUND:entity.generic.explode:1:1"
+  firework:
+    material: FIREWORK_ROCKET
+    name: "<#ff4d6d>Фейерверк"
+    lore: ["<gray>Салют в честь победы"]
+    price: 89
+    actions:
+      - "FIREWORK:#ff4d6d"
+      - "SOUND:entity.firework_rocket.blast:1:1"
+  hearts:
+    material: RED_TULIP
+    name: "<#ff69b4>Сердца"
+    lore: ["<gray>Много сердечек"]
+    price: 59
+    actions:
+      - "PARTICLE:HEART:14:0.5"
+  souls:
+    material: SOUL_LANTERN
+    name: "<#55ffff>Души"
+    lore: ["<gray>Души улетают в небо"]
+    price: 99
+    actions:
+      - "PARTICLE:SOUL:30:0.5:0.05"
+      - "PARTICLE:SOUL_FIRE_FLAME:20:0.4:0.03"
+      - "SOUND:particle.soul_escape:1:1"
+  portal:
+    material: OBSIDIAN
+    name: "<#a855f7>Портал"
+    lore: ["<gray>Фиолетовый вихрь портала"]
+    price: 89
+    actions:
+      - "PARTICLE:PORTAL:80:0.6:0.5"
+      - "SOUND:entity.enderman.teleport:1:1"
+  ice:
+    material: BLUE_ICE
+    name: "<#9ad7ff>Лёд"
+    lore: ["<gray>Жертва рассыпается снежинками"]
+    price: 79
+    actions:
+      - "PARTICLE:SNOWFLAKE:50:0.5:0.05"
+      - "SOUND:block.glass.break:1:1.5"
+  amethyst:
+    material: AMETHYST_CLUSTER
+    name: "<#c77dff>Аметист"
+    lore: ["<gray>Хрустальный перезвон"]
+    price: 99
+    actions:
+      - "PARTICLE:WITCH:25:0.5:0.05"
+      - "SOUND:block.amethyst_cluster.break:1:1"
+  sculk:
+    material: SCULK_CATALYST
+    name: "<#1e6f8a>Скалк"
+    lore: ["<gray>Тёмная энергия скалка"]
+    price: 129
+    actions:
+      - "PARTICLE:SCULK_SOUL:20:0.4:0.03"
+      - "PARTICLE:SCULK_CHARGE_POP:15:0.5:0.02"
+      - "SOUND:block.sculk_catalyst.bloom:1:1"
+  flames:
+    material: BLAZE_POWDER
+    name: "<#ff8800>Пламя"
+    lore: ["<gray>Огненная вспышка"]
+    price: 69
+    actions:
+      - "PARTICLE:FLAME:60:0.4:0.08"
+      - "SOUND:entity.blaze.shoot:1:1"
+  smoke:
+    material: COAL
+    name: "<#888888>Дым"
+    lore: ["<gray>Густой чёрный дым"]
+    price: 49
+    actions:
+      - "PARTICLE:LARGE_SMOKE:30:0.4:0.03"
+  totem:
+    material: TOTEM_OF_UNDYING
+    name: "<#ffdd00>Тотем"
+    lore: ["<gray>Эффект тотема бессмертия"]
+    price: 119
+    actions:
+      - "PARTICLE:TOTEM_OF_UNDYING:60:0.5:0.3"
+      - "SOUND:item.totem.use:0.8:1"
+  melody:
+    material: NOTE_BLOCK
+    name: "<#3be05a>Мелодия"
+    lore: ["<gray>Нотки и колокольчик"]
+    price: 59
+    actions:
+      - "PARTICLE:NOTE:15:0.5:1"
+      - "SOUND:block.note_block.bell:1:1.2"
+  magic:
+    material: ENCHANTING_TABLE
+    name: "<#6ec1ff>Магия"
+    lore: ["<gray>Древние руны вокруг жертвы"]
+    price: 89
+    actions:
+      - "PARTICLE:ENCHANT:80:0.8:0.5"
+      - "SOUND:block.enchantment_table.use:1:1"
+  sparks:
+    material: COPPER_INGOT
+    name: "<#ffb347>Электроискры"
+    lore: ["<gray>Рой искр"]
+    price: 79
+    actions:
+      - "PARTICLE:ELECTRIC_SPARK:40:0.6:0.2"
+      - "SOUND:block.copper_bulb.turn_on:1:1"
+  cloud:
+    material: WHITE_WOOL
+    name: "<white>Облако"
+    lore: ["<gray>Мягкое облачко"]
+    price: 49
+    actions:
+      - "PARTICLE:CLOUD:40:0.5:0.05"
+  joy:
+    material: EMERALD
+    name: "<#00ff66>Радость"
+    lore: ["<gray>Зелёные искорки радости"]
+    price: 59
+    actions:
+      - "PARTICLE:HAPPY_VILLAGER:25:0.6:0.0"
+      - "SOUND:entity.villager.celebrate:1:1"
+  rage:
+    material: FIRE_CHARGE
+    name: "<#ff3333>Ярость"
+    lore: ["<gray>Красная вспышка гнева"]
+    price: 69
+    actions:
+      - "PARTICLE:ANGRY_VILLAGER:10:0.5:0.0"
+      - "SOUND:entity.ravager.roar:0.8:1.2"
+  skull:
+    material: SKELETON_SKULL
+    name: "<#cccccc>Череп"
+    lore: ["<gray>Пепел и костяной хруст"]
+    price: 89
+    actions:
+      - "PARTICLE:ASH:50:0.5:0.0"
+      - "SOUND:entity.skeleton.death:1:0.8"
+  crit:
+    material: IRON_SWORD
+    name: "<#ffd166>Критический удар"
+    lore: ["<gray>Россыпь крит-частиц"]
+    price: 69
+    actions:
+      - "PARTICLE:CRIT:40:0.5:0.3"
+      - "PARTICLE:ENCHANTED_HIT:25:0.5:0.3"
+      - "SOUND:entity.player.attack.crit:1:1"

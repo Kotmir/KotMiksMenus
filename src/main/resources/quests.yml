@@ -1,0 +1,250 @@
+# ═══════════════════════════════════════════════════════════════
+#  KotMiksMenus — quests.yml (/quests, /quest)
+#  Квесты выполняются строго по порядку, прогресс засчитывается только активному.
+#  Задача: type = BREAK_BLOCK | PLACE_BLOCK | KILL_PLAYER | KILL_MOB | FISH
+#          keys = материалы блоков / типы мобов (пусто — любые)
+#  Награда: money (Vault) · rewards (item:/money:/rubies:/bpcoins:/cmd:) · commands (консоль)
+#           reward-text — текст награды в меню
+# ═══════════════════════════════════════════════════════════════
+
+title: "<dark_gray>- Начальные квесты -"
+
+format:
+  task: " <#d946ef>▪ <white>{text} <gray>({label} <white>{current}<gray>)"
+  task-done: " <#3be05a>✔ <gray>{text} ({label} {current})"
+
+states:
+  active:
+    material: AMETHYST_SHARD
+    name: "<#d946ef>Квест #{num}"
+    glow: true
+    lore:
+      - ""
+      - "<#d946ef>Описание:"
+      - "{description}"
+      - ""
+      - "<#d946ef>Задание:"
+      - "{tasks}"
+      - ""
+      - "<#d946ef>Награда:"
+      - " <#ffdd00>{reward}"
+  locked:
+    material: RED_CONCRETE
+    name: "<red>Квест #{num}"
+    lore:
+      - ""
+      - "<red>✖ Квест закрыт"
+      - "<gray>Выполните предыдущий квест"
+      - ""
+      - "<#d946ef>Награда:"
+      - " <#ffdd00>{reward}"
+  done:
+    material: LIME_CONCRETE
+    name: "<#3be05a>Квест #{num}"
+    lore:
+      - ""
+      - "<#d946ef>Задание:"
+      - "{tasks}"
+      - ""
+      - "<#3be05a>✔ Выполнено"
+
+quests:
+  1:
+    description:
+      - "<gray>Монетки <#ffdd00>◉<gray> — главная валюта сервера."
+      - "<gray>Их можно добыть в зоне шахт или на дне бокса."
+      - "<gray>В боксе есть <red>PvP<gray>, будь осторожен!"
+    tasks:
+      1:
+        type: BREAK_BLOCK
+        keys: [DIAMOND_ORE, DEEPSLATE_DIAMOND_ORE]
+        amount: 25
+        text: "Добыть <white>25<gray> блоков алмазной руды"
+        label: "добыто"
+      2:
+        type: BREAK_BLOCK
+        keys: [DIAMOND_BLOCK]
+        amount: 15
+        text: "Добыть <white>15<gray> алмазных блоков"
+        label: "добыто"
+    money: 1000
+    reward-text: "1.000 ◉"
+  2:
+    description:
+      - "<gray>Железо — основа любого снаряжения."
+      - "<gray>Найди его в шахтах и пещерах."
+    tasks:
+      1:
+        type: BREAK_BLOCK
+        keys: [IRON_ORE, DEEPSLATE_IRON_ORE]
+        amount: 64
+        text: "Добыть <white>64<gray> железной руды"
+        label: "добыто"
+    money: 1500
+    reward-text: "1.500 ◉"
+  3:
+    description:
+      - "<gray>Бокс — место для настоящих бойцов."
+      - "<gray>Покажи, на что ты способен!"
+    tasks:
+      1:
+        type: KILL_PLAYER
+        amount: 5
+        text: "Убить <white>5<gray> игроков"
+        label: "убито"
+    money: 2000
+    reward-text: "2.000 ◉"
+  4:
+    description:
+      - "<gray>Дерево нужно всегда: для построек и инструментов."
+    tasks:
+      1:
+        type: BREAK_BLOCK
+        keys: [OAK_LOG, BIRCH_LOG, SPRUCE_LOG, JUNGLE_LOG, ACACIA_LOG, DARK_OAK_LOG, MANGROVE_LOG, CHERRY_LOG]
+        amount: 100
+        text: "Срубить <white>100<gray> брёвен"
+        label: "добыто"
+    money: 1500
+    reward-text: "1.500 ◉"
+  5:
+    description:
+      - "<gray>Рыбалка — спокойный способ заработать."
+    tasks:
+      1:
+        type: FISH
+        amount: 20
+        text: "Поймать <white>20<gray> рыб"
+        label: "поймано"
+    money: 2000
+    reward-text: "2.000 ◉"
+  6:
+    description:
+      - "<gray>Золото и древние обломки ценятся на рынке."
+    tasks:
+      1:
+        type: BREAK_BLOCK
+        keys: [GOLD_ORE, DEEPSLATE_GOLD_ORE]
+        amount: 30
+        text: "Добыть <white>30<gray> золотой руды"
+        label: "добыто"
+      2:
+        type: BREAK_BLOCK
+        keys: [ANCIENT_DEBRIS]
+        amount: 5
+        text: "Добыть <white>5<gray> древних обломков"
+        label: "добыто"
+    money: 3000
+    reward-text: "3.000 ◉"
+  7:
+    description:
+      - "<gray>Мобы ночью опасны — зачисти окрестности."
+    tasks:
+      1:
+        type: KILL_MOB
+        keys: [ZOMBIE]
+        amount: 50
+        text: "Убить <white>50<gray> зомби"
+        label: "убито"
+      2:
+        type: KILL_MOB
+        keys: [SKELETON]
+        amount: 50
+        text: "Убить <white>50<gray> скелетов"
+        label: "убито"
+    money: 3500
+    reward-text: "3.500 ◉"
+  8:
+    description:
+      - "<gray>Построй себе уютное место."
+    tasks:
+      1:
+        type: PLACE_BLOCK
+        amount: 500
+        text: "Поставить <white>500<gray> блоков"
+        label: "поставлено"
+    money: 2500
+    reward-text: "2.500 ◉"
+  9:
+    description:
+      - "<gray>Настоящие бои только начинаются."
+    tasks:
+      1:
+        type: KILL_PLAYER
+        amount: 15
+        text: "Убить <white>15<gray> игроков"
+        label: "убито"
+    money: 5000
+    reward-text: "5.000 ◉"
+  10:
+    description:
+      - "<gray>Глубины Незера хранят редкие ресурсы."
+    tasks:
+      1:
+        type: BREAK_BLOCK
+        keys: [ANCIENT_DEBRIS]
+        amount: 10
+        text: "Добыть <white>10<gray> древних обломков"
+        label: "добыто"
+      2:
+        type: BREAK_BLOCK
+        keys: [EMERALD_ORE, DEEPSLATE_EMERALD_ORE]
+        amount: 20
+        text: "Добыть <white>20<gray> изумрудной руды"
+        label: "добыто"
+    money: 6000
+    reward-text: "6.000 ◉"
+  11:
+    description:
+      - "<gray>Зачисти мир от мобов."
+    tasks:
+      1:
+        type: KILL_MOB
+        amount: 100
+        text: "Убить <white>100<gray> мобов"
+        label: "убито"
+    money: 5000
+    reward-text: "5.000 ◉"
+  12:
+    description:
+      - "<gray>Алмазы никогда не бывают лишними."
+    tasks:
+      1:
+        type: BREAK_BLOCK
+        keys: [DIAMOND_ORE, DEEPSLATE_DIAMOND_ORE]
+        amount: 100
+        text: "Добыть <white>100<gray> алмазной руды"
+        label: "добыто"
+    money: 8000
+    reward-text: "8.000 ◉"
+  13:
+    description:
+      - "<gray>Стань грозой бокса."
+    tasks:
+      1:
+        type: KILL_PLAYER
+        amount: 30
+        text: "Убить <white>30<gray> игроков"
+        label: "убито"
+    money: 10000
+    reward-text: "10.000 ◉ + 5 ♦"
+    rewards:
+      - "rubies:5"
+  14:
+    description:
+      - "<gray>Последнее испытание начальных квестов."
+    tasks:
+      1:
+        type: KILL_PLAYER
+        amount: 50
+        text: "Убить <white>50<gray> игроков"
+        label: "убито"
+      2:
+        type: BREAK_BLOCK
+        keys: [DIAMOND_BLOCK]
+        amount: 50
+        text: "Добыть <white>50<gray> алмазных блоков"
+        label: "добыто"
+    money: 20000
+    reward-text: "20.000 ◉ + 10 ♦"
+    rewards:
+      - "rubies:10"

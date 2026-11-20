@@ -1,0 +1,163 @@
+# ═══════════════════════════════════════════════════════════════
+#  KotMiksMenus — bases.yml (/base, /bases)
+#  Команды: /base · /base home · /base friend add|remove <ник>
+#           /base accept|deny <ник> · /base leave <ник> · /base visit <ник>
+# ═══════════════════════════════════════════════════════════════
+
+buy-price: 150000           # цена базы в монетах (Vault)
+min-distance: 100           # минимальное расстояние между базами (блоков)
+allowed-worlds: []          # пусто — любой мир; иначе список, например ["world"]
+request-ttl-seconds: 60     # сколько живёт запрос в друзья
+
+# Команды консоли при создании базы. Доступно: {player} {world} {x} {y} {z}
+# Пример для WorldGuard:
+#   - "rg define base_{player} -w {world} {x},0,{z} {x},320,{z}"
+create-commands: []
+
+# Права друзей по умолчанию для новой базы
+defaults:
+  pvp: false
+  shulkers: false
+  build: false
+
+# Встроенная защита территории базы (квадрат с радиусом по уровню).
+# Выключите, если защитой занимается WorldGuard/GriefPrevention.
+protection:
+  enabled: true
+
+# Уровни базы. upgrade-price — цена улучшения С ЭТОГО уровня на следующий.
+levels:
+  1: { radius: 25,  friends: 3,  shulkers: 5,  upgrade-price: 100000 }
+  2: { radius: 35,  friends: 5,  shulkers: 10, upgrade-price: 250000 }
+  3: { radius: 50,  friends: 8,  shulkers: 15, upgrade-price: 500000 }
+  4: { radius: 70,  friends: 12, shulkers: 20, upgrade-price: 1000000 }
+  5: { radius: 100, friends: 16, shulkers: 30, upgrade-price: 0 }
+
+menu:
+  title: "<dark_gray>- Базы -"
+  error-ticks: 40           # сколько тиков показывается «Ошибка!»
+  buy:
+    material: RED_DYE
+    name: "<#ff5555>Купить базу"
+    lore:
+      - "<gray>Купить базу за <#ffdd00>{price} монет"
+      - ""
+      - "<gray>База создаётся в точке, где вы стоите."
+      - "<#ff5555>▶ Нажми, чтобы купить"
+  buy-confirm:
+    material: LIME_DYE
+    name: "<#00ff66>Подтвердить покупку"
+    glow: true
+    lore:
+      - "<gray>Нажми еще раз, чтобы купить за <#ffdd00>{price} монет"
+  home:
+    material: ENDER_PEARL
+    name: "<#00ff66>Телепорт на базу"
+    lore:
+      - "<gray>Перенестись на свою базу"
+      - ""
+      - "<#00ff66>▶ Нажми, чтобы телепортироваться"
+  friends:
+    material: CAMPFIRE
+    name: "<#ff5555>¤ Разрешения для друзей"
+    lore:
+      - "<gray>PvP, шалкеры и строительство"
+      - "<gray>для друзей вашей базы"
+      - ""
+      - "<#ff5555>▶ Нажми, чтобы открыть"
+  manage:
+    material: BELL
+    name: "<#ff5555>¤ Управление"
+    lore:
+      - "<gray>Прокачка базы, базы друзей,"
+      - "<gray>запросы в друзья"
+      - ""
+      - "<#ff5555>▶ Нажми, чтобы открыть"
+  no-base-error:
+    material: TROPICAL_FISH
+    name: "<#ff3333>Ошибка!"
+    lore:
+      - "<red>У вас отсутствует база!"
+
+friends-menu:
+  title: "<dark_gray>- Разрешения для друзей -"
+  state-on: "<green>✔ Включено"
+  state-off: "<red>✖ Выключено"
+  pvp:
+    material: IRON_SWORD
+    name: "<#ff5555>PvP между участниками"
+    lore:
+      - "<gray>Могут ли друзья драться на базе"
+      - ""
+      - "{state}"
+  shulkers:
+    material: SHULKER_BOX
+    name: "<#d946ef>Шалкеры"
+    lore:
+      - "<gray>Могут ли друзья ставить шалкеры"
+      - ""
+      - "{state}"
+  build:
+    material: BRICKS
+    name: "<#ffaa00>Строительство"
+    lore:
+      - "<gray>Могут ли друзья строить и ломать"
+      - ""
+      - "{state}"
+  back:
+    material: ARROW
+    name: "<white>← Назад"
+
+manage-menu:
+  title: "<dark_gray>- Управление -"
+  upgrade:
+    material: NETHER_STAR
+    name: "<#6ec1ff>Улучшить базу"
+    lore:
+      - ""
+      - "<gray>Уровень: <white>{level}<gray>/<white>{max-level}"
+      - "<gray>Друзей: <white>{friends-limit} <dark_gray>→ <#3be05a>{next-friends}"
+      - "<gray>Шалкеров: <white>{shulkers-limit} <dark_gray>→ <#3be05a>{next-shulkers}"
+      - "<gray>Радиус: <white>{radius} <dark_gray>→ <#3be05a>{next-radius}"
+      - ""
+      - "<gray>Цена: <#ffdd00>{price} ◉"
+      - "<#6ec1ff>▶ Нажми, чтобы улучшить"
+  upgrade-max:
+    material: NETHER_STAR
+    name: "<#6ec1ff>Улучшить базу"
+    glow: true
+    lore:
+      - ""
+      - "<#3be05a>✔ Максимальный уровень"
+  info:
+    material: PAPER
+    name: "<white>Ваша база"
+    lore:
+      - ""
+      - "<gray>Уровень: <white>{level}"
+      - "<gray>Друзей: <white>{friends}<gray>/<white>{friends-limit}"
+      - "<gray>Шалкеров: <white>{shulkers}<gray>/<white>{shulkers-limit}"
+      - "<gray>Радиус: <white>{radius}"
+  no-base:
+    material: BARRIER
+    name: "<red>У вас нет базы"
+    lore:
+      - "<gray>Купите базу в меню <white>/base"
+  friend-base:
+    material: PLAYER_HEAD
+    head: friend-base
+    name: "<#ff5555>База {owner}"
+    lore:
+      - "<gray>Вы — друг этой базы"
+      - ""
+      - "<#ff5555>▶ Нажми, чтобы телепортироваться"
+  back:
+    material: ARROW
+    name: "<white>← Назад"
+  requests:
+    material: PAPER
+    name: "<#ff5555>Разрешать запросы: {state}"
+    lore:
+      - "<gray>Принимать приглашения в друзья баз"
+      - ""
+      - "<#ff5555>▶ Нажми, чтобы переключить"

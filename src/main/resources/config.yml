@@ -1,0 +1,271 @@
+# ═══════════════════════════════════════════════════════════════
+#  KotMiksMenus — основной конфиг
+#  Сайт сервера: https://donat.kotmir.tech
+#  Все тексты — в формате MiniMessage: https://docs.advntr.dev/minimessage/format.html
+#  После правки: /kmenus reload
+# ═══════════════════════════════════════════════════════════════
+
+# Часовой пояс для смены ежедневных/еженедельных заданий
+timezone: "Europe/Moscow"
+
+# Требовать повторный клик для покупки за рубины (донат-меню, титулы, эффекты)
+confirm-purchases: true
+
+rubies:
+  # internal — баланс хранится в data.yml; playerpoints — через плагин PlayerPoints
+  provider: internal
+
+# ───────────────────────────────────────────────────────────────
+#  Кастомные головы. Сюда вставляется Base64 из поля "Value"
+#  на https://minecraft-heads.com (также принимается ссылка
+#  http://textures.minecraft.net/texture/... или хеш текстуры).
+#  Пустое значение — обычная голова Стива.
+#  В любом предмете: head: ключ_из_этого_списка
+# ───────────────────────────────────────────────────────────────
+heads:
+  discord: ""
+  telegram: ""
+  social-coin: ""
+  kills: ""
+  donate-privileges: ""
+  donate-kits: ""
+  donate-tools: ""
+  donate-cases: ""
+  title-common: ""
+  title-rare: ""
+  title-epic: ""
+  title-legendary: ""
+  rank-vip: ""
+  rank-mvp: ""
+  rank-hero: ""
+  rank-elite: ""
+  rank-god: ""
+  rank-ely: ""
+  rank-star: ""
+  friend-base: ""
+
+# ───────────────────────────────────────────────────────────────
+#  /social — привязка соцсетей (воронка на 5 слотов)
+#  Ссылки (value) оставлены пустыми — впишите свои.
+# ───────────────────────────────────────────────────────────────
+social:
+  title: "<dark_gray>- Привязка -"
+  discord:
+    material: PLAYER_HEAD
+    head: discord
+    name: "<#5865F2>Дискорд"
+    lore:
+      - "<gray>Привяжи аккаунт к Discord"
+      - ""
+      - "<#5865F2>▶ Нажми, чтобы начать"
+    steps:
+      1:
+        text: "<#5865F2>[1] <white>Перейди на наш Discord-сервер:"
+        button: "<#5865F2><underlined>[Открыть]"
+        action: open_url
+        value: ""
+        hover: "<gray>Открыть ссылку"
+      2:
+        text: "<#5865F2>[2] <white>Напиши боту команду привязки:"
+        button: "<#3be05a><underlined>[Копировать]"
+        action: copy
+        value: "/link {player}"
+        hover: "<gray>Скопировать команду"
+  telegram:
+    material: PLAYER_HEAD
+    head: telegram
+    name: "<#2AABEE>Телеграмм"
+    lore:
+      - "<gray>Привяжи аккаунт к Telegram"
+      - ""
+      - "<#2AABEE>▶ Нажми, чтобы начать"
+    steps:
+      1:
+        text: "<#2AABEE>[1] <white>Подпишись на наш канал:"
+        button: "<#2AABEE><underlined>[Открыть]"
+        action: open_url
+        value: ""
+        hover: "<gray>Открыть ссылку"
+      2:
+        text: "<#2AABEE>[2] <white>Запусти нашего бота:"
+        button: "<#2AABEE><underlined>[Открыть]"
+        action: open_url
+        value: ""
+        hover: "<gray>Открыть ссылку"
+      3:
+        text: "<#2AABEE>[3] <white>Отправь боту команду привязки:"
+        button: "<#3be05a><underlined>[Копировать]"
+        action: copy
+        value: "/link {player}"
+        hover: "<gray>Скопировать команду"
+
+# ───────────────────────────────────────────────────────────────
+#  /daily — ежедневная награда (выбрасыватель на 9 слотов)
+# ───────────────────────────────────────────────────────────────
+daily:
+  title: "<dark_gray>- Ежедневная награда -"
+  cooldown-hours: 24
+  status-ready: "<#3be05a>✔ Нажми, чтобы забрать!"
+  status-wait: "<red>⌛ Уже получено! <gray>(ещё {time})"
+  item:
+    material: ACACIA_BOAT
+    name: "<#ffdd00>Ежедневная награда"
+    lore:
+      - ""
+      - "{status}"
+      - ""
+      - "<gray>Награды:"
+      - "{rewards}"
+  # строки для отображения в лоре
+  reward-lines:
+    - "<#3be05a>+ <white>Обычный ящик x1"
+    - "<#3be05a>+ <white>2.000 ◉"
+  rewards:
+    money: 2000
+    commands:
+      - "crates give {player} common 1"
+
+# ───────────────────────────────────────────────────────────────
+#  /kills — награды за убийства (45 слотов)
+#  Прогресс берётся из статистики PLAYER_KILLS.
+# ───────────────────────────────────────────────────────────────
+kills:
+  title: "<dark_gray>- Награды за убийства -"
+  close:
+    slot: 40
+    material: ARROW
+    name: "<#ff7777>Закрыть"
+  states:
+    locked:
+      material: PLAYER_HEAD
+      head: kills
+      name: "<#ff5555>{name}"
+      lore:
+        - ""
+        - "<gray>Убийств: <white>{kills}<gray>/<white>{need}"
+        - "<gray>Награда: <#ffdd00>{reward}"
+        - ""
+        - "<red>✖ Не хватает убийств"
+    ready:
+      material: PLAYER_HEAD
+      head: kills
+      name: "<#3be05a>{name}"
+      glow: true
+      lore:
+        - ""
+        - "<gray>Убийств: <white>{kills}<gray>/<white>{need}"
+        - "<gray>Награда: <#ffdd00>{reward}"
+        - ""
+        - "<#3be05a>✔ Нажми, чтобы забрать!"
+    claimed:
+      material: PLAYER_HEAD
+      head: kills
+      name: "<gray>{name}"
+      lore:
+        - ""
+        - "<gray>Убийств: <white>{need}<gray>/<white>{need}"
+        - "<gray>Награда: <#ffdd00>{reward}"
+        - ""
+        - "<gray>✔ Награда получена"
+  # money — монеты через Vault; commands — консольные команды ({player})
+  levels:
+    1:  { name: "Новичок в бою I",   kills: 1,    money: 100 }
+    2:  { name: "Новичок в бою II",  kills: 5,    money: 500 }
+    3:  { name: "Новичок в бою III", kills: 10,   money: 1500 }
+    4:  { name: "Боец I",            kills: 25,   money: 4000 }
+    5:  { name: "Боец II",           kills: 50,   money: 8000 }
+    6:  { name: "Боец III",          kills: 75,   money: 15000 }
+    7:  { name: "Воин I",            kills: 100,  money: 25000 }
+    8:  { name: "Воин II",           kills: 150,  money: 40000 }
+    9:  { name: "Воин III",          kills: 250,  money: 70000 }
+    10: { name: "Убийца",            kills: 400,  money: 110000 }
+    11: { name: "Палач",             kills: 600,  money: 170000 }
+    12: { name: "Легенда",           kills: 900,  money: 270000 }
+    13: { name: "Мифический",        kills: 1200, money: 400000 }
+    14: { name: "Абсолют",           kills: 1500, money: 600000 }
+
+# ───────────────────────────────────────────────────────────────
+#  Сообщения. {prefix} подставляется автоматически.
+# ───────────────────────────────────────────────────────────────
+messages:
+  prefix: "<#ffdd00>KotMiks <dark_gray>» <gray>"
+  no-permission: "{prefix}<red>У вас нет прав на эту команду."
+  player-only: "{prefix}<red>Эта команда доступна только игрокам."
+  reloaded: "{prefix}<#3be05a>Все конфиги перезагружены."
+  kmenus-usage: "{prefix}<gray>Использование: <white>/kmenus [reload | givecoin ИГРОК КОЛ-ВО]"
+  player-offline: "{prefix}<red>Игрок не в сети."
+  invalid-number: "{prefix}<red>Некорректное число."
+  coin-given: "{prefix}<gray>Выдано <white>{amount}<gray> соц. коинов игроку <white>{player}<gray>."
+  menu-empty: "{prefix}<red>Это меню пока не настроено."
+  no-space: "{prefix}<red>Недостаточно места в инвентаре."
+  economy-missing: "{prefix}<red>Экономика (Vault) недоступна. Обратитесь к администрации."
+  no-money: "{prefix}<red>Недостаточно монет. Нужно: <white>{price}"
+  no-items: "{prefix}<red>Недостаточно предметов для оплаты. Нужно: <white>{price}"
+  no-rubies: "{prefix}<red>Недостаточно рубинов. Нужно: <white>{price} ♦"
+  confirm-click: "{prefix}<gray>Нажмите ещё раз, чтобы подтвердить покупку."
+  confirm-click-right: "{prefix}<gray>Нажмите <white>ПКМ<gray> ещё раз, чтобы подтвердить покупку."
+  link-missing: "<red>(ссылка не настроена)"
+
+  rubies-usage: "{prefix}<gray>Использование: <white>/rubies [give | take | set | balance] ИГРОК [КОЛ-ВО]"
+  rubies-balance: "{prefix}<gray>Рубины игрока <white>{player}<gray>: <#ff4d6d>{amount} ♦"
+  rubies-done: "{prefix}<gray>Теперь у <white>{player}<gray>: <#ff4d6d>{amount} ♦"
+
+  shop-bought: "{prefix}<gray>Вы купили <white>{item}<gray> за <#ffdd00>{price}<gray>."
+
+  daily-wait: "{prefix}<red>Награда уже получена. Следующая через <white>{time}"
+  daily-claimed: "{prefix}<#3be05a>Вы получили ежедневную награду!"
+
+  kills-already: "{prefix}<red>Эта награда уже получена."
+  kills-not-enough: "{prefix}<red>Недостаточно убийств: <white>{kills}<gray>/<white>{need}"
+  kills-claimed: "{prefix}<#3be05a>Награда «{name}» получена: <#ffdd00>{reward}"
+
+  donate-link: "{prefix}<gray>Покупка на сайте: <#ffdd00><underlined><click:open_url:'{site}'>{site}</click>"
+  donate-bought: "{prefix}<gray>Вы купили <white>{item}<gray> за <#ff4d6d>{price} ♦<gray>."
+
+  titles-usage: "{prefix}<gray>Использование: <white>/titles give ИГРОК ID_ТИТУЛА"
+  title-unknown: "{prefix}<red>Титул <white>{id}<red> не найден."
+  title-given: "{prefix}<gray>Титул «<white>{title}<gray>» выдан игроку <white>{player}<gray>."
+  title-cleared: "{prefix}<gray>Титул очищен."
+  title-selected: "{prefix}<gray>Выбран титул: <white>{title}"
+  title-locked: "{prefix}<gray>Титул закрыт. Нажмите <white>ПКМ<gray>, чтобы купить."
+  title-bought: "{prefix}<gray>Вы купили титул «<white>{title}<gray>» за <#ff4d6d>{price} ♦<gray>."
+
+  base-world: "{prefix}<red>В этом мире нельзя создать базу."
+  base-min-distance: "{prefix}<red>Слишком близко к другой базе (минимум <white>{distance}<red> блоков)."
+  base-bought: "{prefix}<#3be05a>База куплена! Телепорт: <white>/base"
+  base-world-missing: "{prefix}<red>Мир базы не загружен."
+  base-teleport: "{prefix}<gray>Телепортация на базу игрока <white>{owner}<gray>."
+  base-max-level: "{prefix}<red>База уже максимального уровня."
+  base-upgraded: "{prefix}<#3be05a>База улучшена до уровня <white>{level}<#3be05a>!"
+  base-no-base: "{prefix}<red>У вас отсутствует база!"
+  base-self: "{prefix}<red>Нельзя добавить самого себя."
+  base-already-friend: "{prefix}<red>Игрок <white>{player}<red> уже в списке друзей."
+  base-friend-limit: "{prefix}<red>Достигнут лимит друзей: <white>{limit}"
+  base-requests-disabled: "{prefix}<red>Игрок <white>{player}<red> не принимает запросы."
+  base-request-sent: "{prefix}<gray>Запрос отправлен игроку <white>{player}<gray>."
+  base-request-received: "{prefix}<white>{owner}<gray> приглашает вас в друзья базы. <#3be05a><click:run_command:'/base accept {owner}'>[Принять]</click> <red><click:run_command:'/base deny {owner}'>[Отклонить]</click>"
+  base-request-expired: "{prefix}<red>Запрос не найден или истёк."
+  base-request-denied: "{prefix}<gray>Вы отклонили запрос."
+  base-request-denied-owner: "{prefix}<white>{player}<gray> отклонил ваш запрос."
+  base-friend-joined: "{prefix}<gray>Вы теперь друг базы игрока <white>{owner}<gray>."
+  base-friend-added: "{prefix}<white>{player}<gray> теперь друг вашей базы."
+  base-friend-removed: "{prefix}<gray>Игрок <white>{player}<gray> удалён из друзей."
+  base-not-friend: "{prefix}<red>Игрок <white>{player}<red> не связан с вашей базой."
+  base-left: "{prefix}<gray>Вы покинули базу игрока <white>{owner}<gray>."
+  base-usage: "{prefix}<gray>/base [home | friend add/remove НИК | accept/deny НИК | leave НИК | visit НИК]"
+  base-protected: "{prefix}<red>Это чужая база!"
+  base-shulker-denied: "{prefix}<red>Вам нельзя ставить шалкеры на этой базе."
+  base-shulker-limit: "{prefix}<red>Лимит шалкеров на базе: <white>{limit}"
+  base-pvp-denied: "{prefix}<red>PvP между участниками базы отключено."
+
+  killeffect-cleared: "{prefix}<gray>Эффект убийства отключён."
+  killeffect-selected: "{prefix}<gray>Выбран эффект: <white>{name}"
+  killeffect-bought: "{prefix}<gray>Вы купили эффект «<white>{name}<gray>» за <#ff4d6d>{price} ♦<gray>."
+
+  bp-not-enough: "{prefix}<red>Не хватает батл-коинов: <white>{need}"
+  bp-claimed: "{prefix}<#3be05a>Уровень <white>{level}<#3be05a> пройден! Награда: <white>{reward}"
+  bp-task-done: "{prefix}<#3be05a>Задание «<white>{task}<#3be05a>» выполнено! <#6ec1ff>+{coins} батл-коинов"
+  bp-usage: "{prefix}<gray>/bp coins [give | take | set | balance] ИГРОК [КОЛ-ВО]"
+  bp-balance: "{prefix}<gray>Батл-коины <white>{player}<gray>: <#6ec1ff>{amount}"
+
+  quest-done: "{prefix}<#3be05a>Квест #{num} выполнен! Награда: <#ffdd00>{reward}"
